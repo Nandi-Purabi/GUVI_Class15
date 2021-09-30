@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+    <title>Cricket Game</title>
+    <style>
+
+        @media only screen and (max-width:449.5px)
+        {
+            body{
+            background-image: url(https://img.favpng.com/24/17/8/fireball-png-favpng-axCdC4CLNPkhYJhrE9LyFAzMk.jpg);
+            background-repeat: no-repeat;
+            background-attachment:scroll;
+            background-size: 100% 15%;
+            color:white;
+            background-position: 50% 12%;
+            background-color: black;
+        }
+        }
+
+        @media only screen and (min-width:450px)
+        {
+            body{
+            background-image: url(https://img.favpng.com/24/17/8/fireball-png-favpng-axCdC4CLNPkhYJhrE9LyFAzMk.jpg);
+            background-repeat: no-repeat;
+            background-attachment:scroll;
+            background-size: 70% 15%;
+            color:white;
+            background-position: 50% 12%;
+            background-color: black;
+        }
+        }
+
+        @media only screen and (min-width:650px)
+        {
+            body{
+            background-image: url(https://img.favpng.com/24/17/8/fireball-png-favpng-axCdC4CLNPkhYJhrE9LyFAzMk.jpg);
+            background-repeat: no-repeat;
+            background-attachment:scroll;
+            background-size: 50% 15%;
+            color:white;
+            background-position: 50% 12%;
+            background-color: black;
+        }
+        }
+
+        @media only screen and (min-width:992px)
+        {
+            body{
+            background-image: url(https://img.favpng.com/24/17/8/fireball-png-favpng-axCdC4CLNPkhYJhrE9LyFAzMk.jpg);
+            background-repeat: no-repeat;
+            background-attachment:scroll;
+            background-size: 40% 50%;
+            color:white;
+            background-position: 50% 76%;
+            background-color: black;
+        }
+        }
+
+        .modal-content{
+            background-color: black;
+            color:white;
+            border:5px solid white;
+        }
+
+        hr{
+            border:2px solid white;
+        }
+        h4, h5, h6{
+            text-align: center;
+        }
+        p{
+            margin-top:16px;
+        }
+        @media only screen and (max-width:991.5px)
+        {
+            #result{
+                margin-bottom:20px;
+            }
+        }
+        #timeleft{
+            font-size: 45px;
+        }
+        .table{
+            font-size:12px;
+        }
+        .table>:not(caption)>*>*{
+            padding:6px;
+        }
+        hr{
+            margin:8px;
+        }
+        .btn{
+            line-height:1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:transparent;text-align: center;">
+          <h4 class="modal-title" id="winner"></h4>
+        </div>
+        <div class="modal-body" style="display:flex;flex-direction: row; justify-content: space-between;" >
+            <h5 id="man_of_match"></h5>
+            <img height="40%" width="20%" src="https://cdn-icons-png.flaticon.com/512/1021/1021220.png">
+        </div>
+        <div class="modal-footer" style="background-color:transparent;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div><b><h5>CRICKET 10</h5></b></div>
+        <hr>
+        <div class="row" style="justify-content: space-evenly;">
+            <div id="score1" class="col-sm-3 col-4">
+                <h6 style="margin: 0px;">TEAM 1 SCORE
+                    <p style="margin:10px;" id="team1_score">0</p>
+                    <button type="button" class="btn btn-secondary" id="hit1" onclick="click_hit1()">HIT 1</button> 
+                </h6>
+            </div>
+            <div id="time" class="col-sm-3 col-4">
+                <h6 style="margin: 0px;">TIMER
+                    <p style="margin:12px;"id="timeleft">60</p>
+                </h6>
+                
+            </div>
+            <div id="score2" class="col-sm-3 col-4">
+                <h6 style="margin: 0px;">TEAM 2 SCORE
+                    <p style="margin:10px;"id="team2_score">0</p>
+                    <button type="button" class="btn btn-secondary" id="hit2" onclick="click_hit2()">HIT 2</button>
+                </h6>
+                
+            </div>
+        </div>
+        <hr>
+        <div style="text-align: center;">
+            <button type="button" class="btn btn-secondary" id="result" onclick="generate_result()">GENERATE RESULT</button>
+        </div>
+        <div class="row" style="justify-content: space-between;">
+            <div class="col-lg-4">
+                <h6 style="font-size:16px;">TEAM 1 SCORE BOARD</h6>
+                <table class="table table-dark table-striped" id="team1"></table>
+            </div>
+            <div class="col-lg-4">
+                <h6 style="font-size:16px;">TEAM 2 SCORE BOARD</h6>
+                <table class="table table-dark table-striped" id="team2"></table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="cricket.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
